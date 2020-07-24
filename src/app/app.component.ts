@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
+    selector: 'app-root',
+    templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
@@ -33,6 +33,14 @@ export class AppComponent {
             .getElementById(this.idx + '')
             .addEventListener('click', this.removeNameField);
     }
+
+    removeNameField($event) {
+        let elementId = event.target.id;
+        let remElement = document.getElementById('name' + elementId);
+
+        remElement.parentNode.removeChild(remElement);
+    }
+
     drawTeams() {
         let result = document.getElementById('wuzzler__result');
         let teamSize = document.getElementById('team-size').value;
