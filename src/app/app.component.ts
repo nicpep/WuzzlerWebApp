@@ -33,4 +33,65 @@ export class AppComponent {
             .getElementById(this.idx + '')
             .addEventListener('click', this.removeNameField);
     }
+    drawTeams() {
+        let result = document.getElementById('wuzzler__result');
+        let teamSize = document.getElementById('team-size').value;
+        let teamNumber = document.getElementById('team-number').value;
+        let namesEl = document.getElementsByClassName('wuzzler__item-name');
+        let names = [];
+
+        result.innerHTML = '';
+
+        for (let i = 0; i < namesEl.length; i++) {
+            names[i] = namesEl[i].value;
+        }
+
+        if (
+            teamSize * teamNumber === names.length &&
+            teamSize > 0 &&
+            teamNumber > 0 &&
+            names.length > 0
+        ) {
+            names = this.shuffle(names);
+
+            let teams = '';
+            for (let i = 1; i <= teamNumber; i++) {
+                for (let j = 0; j < teamSize; j++) {
+                    teams += '<li>' + names[0] + '</li>';
+                    names.shift();
+                }
+
+                let listElement = '<ul id="team' + i + '" class="team__list">';
+
+                result.innerHTML +=
+                    '<div class="team"><h1>Team ' +
+                    i +
+                    '</h1>' +
+                    listElement +
+                    teams;
+
+                result.innerHTML += '</ul></div>';
+                teams = '';
+            }
+        } else {
+            result.innerHTML = 'Ein Fehler ist aufgetreten';
+        }
+    }
+
+    shuffle(array) {
+        let currentIndex = array.length,
+            temporaryValue,
+            randomIndex;
+
+        while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    }
 }
