@@ -25,7 +25,11 @@ body {
         border-radius: 8px;
     }
 
-    .wuzzler__input-number {
+    h2 {
+        font-size: 16px;
+    }
+
+    &__input-number {
         max-width: 100px;
         margin: 0 12px 20px;
     }
@@ -35,46 +39,42 @@ body {
         margin: 30px 0;
         padding: 5px 20px;
     }
-}
 
-h2 {
-    font-size: 16px;
-}
+    &__fieldname--header {
+        display: flex;
+        margin-bottom: 15px;
 
-.wuzzler__fieldname--header {
-    display: flex;
-    margin-bottom: 15px;
+        h2 {
+            margin: 0;
+            margin-right: 10px;
+        }
 
-    h2 {
-        margin: 0;
-        margin-right: 10px;
+        .plus {
+            font-size: 18px;
+            padding: 1px 6px;
+        }
     }
 
-    .plus {
-        font-size: 18px;
-        padding: 1px 6px;
+    &__fieldname--wrapper {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        margin: 1em auto;
+
+        &::after {
+            content: "";
+            flex: auto;
+        }
     }
-}
 
-.wuzzler__fieldname--wrapper {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    margin: 1em auto;
+    #wuzzler__result {
+        display: flex;
+        justify-content: space-around;
+        flex-flow: row wrap;
 
-    &::after {
-        content: "";
-        flex: auto;
-    }
-}
-
-#wuzzler__result {
-    display: flex;
-    justify-content: space-around;
-    flex-flow: row wrap;
-
-    &::after {
-        content: "";
-        flex: auto;
+        &::after {
+            content: "";
+            flex: auto;
+        }
     }
 }
